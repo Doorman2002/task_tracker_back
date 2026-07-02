@@ -6,17 +6,17 @@ class AdminSerializer(ModelSerializer):
     class Meta:
         model=Admin
         fields="__all__"
-        extra_kwargs={"token":{"write_only":True}}
-        
+
 class SignupSerializer(serializers.Serializer):
     dept=serializers.CharField(allow_null=True)
     name=serializers.CharField(allow_null=True)
     email=serializers.EmailField(allow_null=True)
+    password=serializers.CharField(allow_null=True)
     role=serializers.CharField(allow_null=True, required=False)
-    
+
 class LoginSerializer(serializers.Serializer):
-    name=serializers.CharField(allow_null=True)
-    unique_id=serializers.CharField(allow_null=True)
+    email=serializers.EmailField(allow_null=True)
+    password=serializers.CharField(allow_null=True)
 
 class AdminLoginSerializer(serializers.Serializer):
     email=serializers.EmailField(allow_null=True)
@@ -28,7 +28,6 @@ class StaffSerializer(ModelSerializer):
     class Meta:
         model=Staff
         fields="__all__"
-        extra_kwargs={"Unique_id":{"write_only":True}}
         
 class TaskSerializer(ModelSerializer):
     class Meta:
