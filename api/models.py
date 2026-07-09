@@ -58,6 +58,8 @@ class Task(models.Model):
     task=models.TextField(null=True)
     date=models.DateField(null=True,auto_now=True)
     status=models.CharField(null=True,default="In progress")
+    completion_date=models.DateField(null=True,blank=True)
+    progress=models.CharField(null=True,blank=True,max_length=10)
                             
     def __str__(self):
     #
@@ -66,4 +68,18 @@ class Task(models.Model):
         
     
         return f"Unassigned Task Done on {str(self.date)}"
+    
 
+class PasswordResetOTP(models.Model):
+    email = models.EmailField()
+    otp = models.CharField(max_length=6)
+    reset_token = models.CharField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    is_used = models.BooleanField(default=False)
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    def __str__(self):
+        return f"OTP for {self.email} - {'Used' if self.is_used else 'Pending'}"
