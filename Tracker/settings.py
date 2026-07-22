@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG =False
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,12 +55,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Tracker.wsgi.application'
 
-DATABASES = {
-    'default': {
+
+sqlite={
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+pg={
+    "ENGINE":"django.db.backends.postgresql",
+    "NAME":"neondb",
+    "USER":"neondb_owner",
+    "PASSWORD":"npg_WqTO0Nz7wdhQ",
+    "HOST":"ep-ancient-pond-af0o5tdp-pooler.c-2.us-west-2.aws.neon.tech",
+    "PORT":"5432",
+    "sslmode":"require",
+    "channel_binding":"require",
 }
+DATABASES ={}
+if DEBUG:
+    DATABASES={"default":sqlite}
+else:
+    DATABASES={"default":pg}
 
 AUTH_PASSWORD_VALIDATORS = []
 
