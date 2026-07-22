@@ -64,6 +64,7 @@ class Signup(APIView):
         
           return Response({"info":"Successful Signup","status":"You can navigate to the login page"},status=status.HTTP_201_CREATED)
         else:
+            # print(serializer.errors)
             return Response({"info":serializer.errors},status=status.HTTP_400_BAD_REQUEST)
             
             

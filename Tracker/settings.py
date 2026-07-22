@@ -16,7 +16,8 @@ ALLOWED_HOSTS = [
 "tasktrackerleadpath.vercel.app",
 "localhost",
 "127.0.0.1",
-"dreamjobmadeasy.leadpathgroup.com"
+# "dreamjobmadeasy.leadpathgroup.com",
+"task-tracker-back-mfxy.onrender.com"
 ]
 
 INSTALLED_APPS = [
@@ -125,7 +126,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  or 'lyzbejvalwemtear'
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
     CSRF_TRUSTED_ORIGINS = [
-        "http://localhost:5173",
+        "http://localhost:3000",
      
         "http://127.0.0.1:8000",
        
