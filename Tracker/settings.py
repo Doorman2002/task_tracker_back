@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR/".env")
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY') or "rKOYkj7OwDRPD_GrP2Po5AudXdNYuGY-gkYr_08IU4G8qNEc4ZyyorDt8A3eF_FBvQU"
 
 DEBUG =False
 
@@ -114,12 +114,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'boyalonetechs@gmail.com')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'lyzbejvalwemtear')
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')or 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST' ) or  'smtp.gmail.com'
+EMAIL_PORT = int(os.getenv('EMAIL_PORT')) or 587
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')or 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') or  'boyalonetechs@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  or 'lyzbejvalwemtear'
 
 
 if DEBUG:
