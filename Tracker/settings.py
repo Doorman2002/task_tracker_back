@@ -12,7 +12,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG =False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+"tasktrackerleadpath.vercel.app",
+"localhost",
+"127.0.0.1",
+"dreamjobmadeasy.leadpathgroup.com"
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,7 +94,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOW_HEADERS = [
@@ -115,3 +120,25 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'boyalonetechs@gmail.com')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'lyzbejvalwemtear')
+
+
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:5173",
+     
+        "http://127.0.0.1:8000",
+       
+    ]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        
+        "https://tasktrackerleadpath.vercel.app",
+        "https://task-tracker-back-mfxy.onrender.com"
+       
+    ]
+    CSRF_TRUSTED_ORIGINS = [
+        "https://tasktrackerleadpath.vercel.app",
+        "https://task-tracker-back-mfxy.onrender.com"
+        
+    ]
