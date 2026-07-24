@@ -1,4 +1,4 @@
-from .models import Staff,Task,Admin,DirectorsTask,PasswordResetOTP
+from .models import Staff,Task,Admin,DirectorsTask,PasswordResetOTP,Arrival
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 
@@ -52,3 +52,7 @@ class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField()
     token = serializers.CharField()
     password = serializers.CharField()
+class ArrivalSerializer(ModelSerializer):
+    class Meta:
+        fields="__all__"
+        model=Arrival

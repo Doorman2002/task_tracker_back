@@ -9,7 +9,7 @@ from django.db.models import Count
 from .serializer import (
     SignupSerializer, StaffSerializer, LoginSerializer, TaskSerializer,
     AdminSerializer, AdminLoginSerializer, DirectorsTaskSerializer,
-    ForgotPasswordSerializer, VerifyOTPSerializer, ResetPasswordSerializer
+    ForgotPasswordSerializer, VerifyOTPSerializer, ResetPasswordSerializer,ArrivalSerializer
 )
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -526,3 +526,19 @@ class ResetPasswordView(APIView):
 
         return Response({"info":"Password reset successfully"},status=status.HTTP_200_OK)
 
+class ArrivalCLS(APIView):
+    def post(self,request):
+        # get the staff that needs to add the time  
+        staff_cookie=request.COOKIES.get("refresh_cookie")
+        if not staff_cookie:
+            return Response({"info":"Unable to Parse Cookie"},status=403)
+        staff=Staff.objects.filter(refresh=staff_cookie).first()
+        if not staff:
+            return Response({"info":"Please Login"},status=400)
+        # get the infomation based on the response
+        serializer=ArrivalSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response({"info":serializer.errors},status=400)
+
+        serializer.save(staff=staff)
+        return Response({"info":"Staff Arrival  Added Successfully"},status=200)

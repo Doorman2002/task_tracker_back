@@ -23,5 +23,7 @@ urlpatterns = [
     path("admin/login/",views.AdminLogin.as_view(),name="admin_login"),
     path("admin/dashboard/",views.AdminDashboard.as_view(),name="admin_dashboard"),
     path("auth/profile/",views.ProfileUpdate.as_view(),name="profile_update"),
+
+    path("arrival/",views.ArrivalCLS.as_view(),name="arrival_depature")
     
 ]

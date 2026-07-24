@@ -83,3 +83,13 @@ class PasswordResetOTP(models.Model):
 
     def __str__(self):
         return f"OTP for {self.email} - {'Used' if self.is_used else 'Pending'}"
+    
+class Arrival(models.Model):
+    staff=models.ForeignKey(Staff,related_name="staff_arrival",on_delete=models.CASCADE)
+    time_of_arrival=models.TimeField(null=True)
+    date=models.DateField(null=True)
+    day=models.CharField(null=True)
+    time_of_leave=models.TimeField(null=True)
+
+    def __str__(self):
+        return f" {self.staff} arrived at {self.time_of_arrival} on {self.day} and left on {self.time_of_leave}"
