@@ -137,7 +137,8 @@ else:
     CORS_ALLOWED_ORIGINS = [
         
         "https://tasktrackerleadpath.vercel.app",
-        "https://task-tracker-back-mfxy.onrender.com"
+        "https://task-tracker-back-mfxy.onrender.com",
+        "http://localhost:3000"
        
     ]
     CSRF_TRUSTED_ORIGINS = [
