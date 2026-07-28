@@ -258,7 +258,8 @@ class DirectorTaskView(APIView):
         DirectorsTask.objects.create(
             staff=staff,
             task=serializer.validated_data.get('task'),
-            status=serializer.validated_data.get('status', 'In progress')
+            status=serializer.validated_data.get('status', 'In progress'),
+            description=serializer.validated_data.get('description', '')
         )
         return Response({"info": "Director task added successfully"}, status=status.HTTP_201_CREATED)
 
