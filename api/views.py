@@ -304,6 +304,7 @@ class AllStaffTasksView(APIView):
                 "staff_name": t.staff.Name if t.staff else "Unknown",
                 "staff_dpt": t.staff.dpt if t.staff else "Unknown",
                 "task": t.task,
+                "description": t.description,
                 "date": t.date,
                 "status": t.status,
                 "completion_date": t.completion_date,
@@ -413,6 +414,7 @@ def admin_dashboard_view(request):
             "staff_name": t.staff.Name if t.staff else "Unassigned",
             "staff_dpt": t.staff.dpt if t.staff else "-",
             "task": t.task,
+            "description": t.description,
             "date": t.date,
             "status": t.status,
         })
@@ -423,6 +425,7 @@ def admin_dashboard_view(request):
             "staff_name": t.staff.Name if t.staff else "Unassigned",
             "staff_dpt": t.staff.dpt if t.staff else "-",
             "task": t.task,
+            "description": t.description,
             "date": t.date,
             "status": t.status,
         })

@@ -40,6 +40,7 @@ class Staff(models.Model):
 class DirectorsTask(models.Model):
     staff=models.ForeignKey(Staff,on_delete=models.SET_NULL,related_name="director_tasks",null=True)
     task=models.TextField(null=True)
+    description=models.TextField(null=True,blank=True)
     date=models.DateField(null=True,auto_now=True)
     status=models.CharField(null=True,default="In progress")
                             
@@ -56,6 +57,7 @@ class DirectorsTask(models.Model):
 class Task(models.Model):
     staff=models.ForeignKey(Staff,on_delete=models.SET_NULL,related_name="task",null=True)
     task=models.TextField(null=True)
+    description=models.TextField(null=True,blank=True)
     date=models.DateField(null=True,auto_now=True)
     status=models.CharField(null=True,default="In progress")
     completion_date=models.DateField(null=True,blank=True)
