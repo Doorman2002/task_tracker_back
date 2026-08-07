@@ -8,16 +8,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR/".env")
 
-SECRET_KEY = os.getenv('SECRET_KEY') or "rKOYkj7OwDRPD_GrP2Po5AudXdNYuGY-gkYr_08IU4G8qNEc4ZyyorDt8A3eF_FBvQU"
+# SECRET_KEY = os.getenv('SECRET_KEY') or "rKOYkj7OwDRPD_GrP2Po5AudXdNYuGY-gkYr_08IU4G8qNEc4ZyyorDt8A3eF_FBvQU"
 
-DEBUG =False
+DEBUG =True
 
 ALLOWED_HOSTS = [
-"tasktrackerleadpath.vercel.app",
+# "tasktrackerleadpath.vercel.app",
 "localhost",
 "127.0.0.1",
 # "dreamjobmadeasy.leadpathgroup.com",
-"task-tracker-back-mfxy.onrender.com"
+# "task-tracker-back-mfxy.onrender.com"
 ]
 
 INSTALLED_APPS = [
@@ -116,34 +116,34 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')or 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST' ) or  'smtp.gmail.com'
-# EMAIL_PORT = int(os.getenv('EMAIL_PORT')) or 465
-EMAIL_PORT=465
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')or 'True'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') or  'boyalonetechs@gmail.com'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  or 'lyzbejvalwemtear'
+# EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')or 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = os.getenv('EMAIL_HOST' ) or  'smtp.gmail.com'
+# # EMAIL_PORT = int(os.getenv('EMAIL_PORT')) or 465
+# EMAIL_PORT=465
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')or 'True'
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') or  'boyalonetechs@gmail.com'
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  or 'lyzbejvalwemtear'
 
 
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-    CSRF_TRUSTED_ORIGINS = [
-        "http://localhost:3000",
+# if DEBUG:
+#     CORS_ALLOW_ALL_ORIGINS = True
+#     CSRF_TRUSTED_ORIGINS = [
+#         "http://localhost:3000",
      
-        "http://127.0.0.1:8000",
+#         "http://127.0.0.1:8000",
        
-    ]
-else:
-    CORS_ALLOWED_ORIGINS = [
+#     ]
+# else:
+#     CORS_ALLOWED_ORIGINS = [
         
-        "https://tasktrackerleadpath.vercel.app",
-        "https://task-tracker-back-mfxy.onrender.com",
-        "http://localhost:3000"
+#         "https://tasktrackerleadpath.vercel.app",
+#         "https://task-tracker-back-mfxy.onrender.com",
+#         "http://localhost:3000"
        
-    ]
-    CSRF_TRUSTED_ORIGINS = [
-        "https://tasktrackerleadpath.vercel.app",
-        "https://task-tracker-back-mfxy.onrender.com"
+#     ]
+#     CSRF_TRUSTED_ORIGINS = [
+#         "https://tasktrackerleadpath.vercel.app",
+#         "https://task-tracker-back-mfxy.onrender.com"
         
     ]
 STATIC_URL="static/"
